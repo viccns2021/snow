@@ -32,3 +32,7 @@ void Camera::truck(float speed) {
 
   computeViewMatrix();
 }
+
+Para fazer o movimento dos objetos nós criamos duas variáveis no window, para controlar a rotação e o movimento vertical.
+No onUpdate nós atualizamos essas variáveis aumentando ou diminuindo para gerar o movimento.
+No onPaint nós determinamos a altura dos objs, alterando entre somar ou subtrair a deslocação de altura e giramos os objs
