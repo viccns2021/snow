@@ -4,7 +4,7 @@ Victor Cristiano do Nascimento Silva  21080416
 Daniel Espindola da Silva  11201720556
 
 
-A ideia era fazer um corredor onde estivesse estatuas e a camera mexesse apenas na horizontal.
+A ideia era fazer um vitrine de estatuas a camera mexesse apenas na horizontal.
 
 Colocamos os bonecos de neve enfileirados representando as estatuas.
 
@@ -18,7 +18,7 @@ private:
   glm::vec3 m_at{0.0f, 0.5f, 0.0f};  // Look-at point
   glm::vec3 m_up{0.0f, 1.0f, 0.0f};  // "up" direction
 
-Para ter o movimento horizontal, trocamos por onde era dada a entrada do comando teclas E e Q, para as setas direita e equerda. Para isso ser feito mativemos apenas a variavel truck e tiramos o movimento dolly e pan, pois rotacionavam e moviam a camera pra frente.
+Para ter o movimento horizontal, trocamos por onde era dada a entrada do comando teclas E e Q, para as setas direita e esquerda. Para isso ser feito mativemos apenas a variavel truck e tiramos o movimento dolly e pan, pois rotacionavam e moviam a camera pra frente.
 
 void Camera::truck(float speed) {
   // Compute forward vector (view direction)
