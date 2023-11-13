@@ -39,6 +39,9 @@ private:
   float m_dollySpeed{};
   float m_truckSpeed{};
   float m_panSpeed{};
+  float radians{};
+  float height{};
+  float multiplier = 1;
 
   Ground m_ground;
 
