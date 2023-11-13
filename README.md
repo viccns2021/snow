@@ -1,7 +1,7 @@
 # snow
 
 Victor Cristiano do Nascimento Silva  21080416
-Daniel Espindola da Silva  11201720555
+Daniel Espindola da Silva  11201720556
 
 
 A ideia era fazer um corredor onde estivesse estatuas e a camera mexesse apenas na horizontal.
