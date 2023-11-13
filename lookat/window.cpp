@@ -158,9 +158,9 @@ void Window::onPaint() {
 
   // Draw white bunny
   glm::mat4 model{1.0f};
-  model = glm::translate(model, glm::vec3(-1.0f, 0.0f, 0.0f));
-  model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0, 1, 0));
-  model = glm::scale(model, glm::vec3(0.3f));
+  model = glm::translate(model, glm::vec3(-3.0f, height, 0.0f));
+  model = glm::rotate(model, glm::radians(radians), glm::vec3(0, 1, 0));
+  model = glm::scale(model, glm::vec3(0.20f));
 
   abcg::glUniformMatrix4fv(m_modelMatrixLocation, 1, GL_FALSE, &model[0][0]);
   abcg::glUniform4f(m_colorLocation, 1.0f, 1.0f, 1.0f, 1.0f);
@@ -169,9 +169,9 @@ void Window::onPaint() {
 
   // Draw yellow bunny
   model = glm::mat4(1.0);
-  model = glm::translate(model, glm::vec3(-2.0f, 0.0f, 0.0f));
-  model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0, 1, 0));
-  model = glm::scale(model, glm::vec3(0.3f));
+  model = glm::translate(model, glm::vec3(-2.0f, 1-height, 0.0f));
+  model = glm::rotate(model, glm::radians(radians), glm::vec3(0, 1, 0));
+  model = glm::scale(model, glm::vec3(0.20f));
 
   abcg::glUniformMatrix4fv(m_modelMatrixLocation, 1, GL_FALSE, &model[0][0]);
   abcg::glUniform4f(m_colorLocation, 1.0f, 0.8f, 0.0f, 1.0f);
@@ -180,9 +180,9 @@ void Window::onPaint() {
 
   // Draw blue bunny
   model = glm::mat4(1.0);
-  model = glm::translate(model, glm::vec3(1.0f, 0.0f, 0.0f));
-  model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0, 1, 0));
-  model = glm::scale(model, glm::vec3(0.3f));
+  model = glm::translate(model, glm::vec3(-1.0f, height, 0.0f));
+  model = glm::rotate(model, glm::radians(radians), glm::vec3(0, 1, 0));
+  model = glm::scale(model, glm::vec3(0.20f));
 
   abcg::glUniformMatrix4fv(m_modelMatrixLocation, 1, GL_FALSE, &model[0][0]);
   abcg::glUniform4f(m_colorLocation, 0.0f, 0.8f, 1.0f, 1.0f);
@@ -191,9 +191,9 @@ void Window::onPaint() {
 
   // Draw green bunny
   model = glm::mat4(1.0);
-  model = glm::translate(model, glm::vec3(-3.0f, 0.0f, 0.0f));
-  model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0, 1, 0));
-  model = glm::scale(model, glm::vec3(0.3f));
+  model = glm::translate(model, glm::vec3(0.0f, 1-height, 0.0f));
+  model = glm::rotate(model, glm::radians(radians), glm::vec3(0, 1, 0));
+  model = glm::scale(model, glm::vec3(0.20f));
 
   abcg::glUniformMatrix4fv(m_modelMatrixLocation, 1, GL_FALSE, &model[0][0]);
   abcg::glUniform4f(m_colorLocation, 0.0f, 1.0f, 0.0f, 1.0f);
@@ -202,9 +202,9 @@ void Window::onPaint() {
   
   // Draw pink bunny
   model = glm::mat4(1.0);
-  model = glm::translate(model, glm::vec3(-4.0f, 0.0f, 0.0f));
-  model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0, 1, 0));
-  model = glm::scale(model, glm::vec3(0.3f));
+  model = glm::translate(model, glm::vec3(1.0f, height, 0.0f));
+  model = glm::rotate(model, glm::radians(radians), glm::vec3(0, 1, 0));
+  model = glm::scale(model, glm::vec3(0.20f));
 
   abcg::glUniformMatrix4fv(m_modelMatrixLocation, 1, GL_FALSE, &model[0][0]);
   abcg::glUniform4f(m_colorLocation, 1.0f, 0.5f, 0.8f, 0.5f);
@@ -214,8 +214,9 @@ void Window::onPaint() {
 
   // Draw red bunny
   model = glm::mat4(1.0);
-  model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0, 1, 0));
-  model = glm::scale(model, glm::vec3(0.3f));
+  model = glm::translate(model, glm::vec3(2.0f, 1-height, 0.0f));
+  model = glm::rotate(model, glm::radians(radians), glm::vec3(0, 1, 0));
+  model = glm::scale(model, glm::vec3(0.20f));
 
   abcg::glUniformMatrix4fv(m_modelMatrixLocation, 1, GL_FALSE, &model[0][0]);
   abcg::glUniform4f(m_colorLocation, 1.0f, 0.25f, 0.25f, 1.0f);
@@ -248,6 +249,17 @@ void Window::onDestroy() {
 
 void Window::onUpdate() {
   auto const deltaTime{gsl::narrow_cast<float>(getDeltaTime())};
+
+  if(height > 1) {
+    multiplier = -1.0f;
+  }
+
+  if(height < 0) {
+    multiplier = 1.0f;
+  }
+
+  height +=0.4*multiplier*deltaTime;
+  radians+=100*deltaTime;
 
   // Update LookAt camera
   //m_camera.dolly(m_dollySpeed * deltaTime);
